@@ -1,0 +1,36 @@
+[project]
+name = "deep-research-agent"
+version = "0.1.0"
+description = "Production-grade multi-agent research system using LangChain's DeepAgents framework"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "deepagents>=0.2.8",
+    "langgraph>=1.0.4",
+    "langchain>=0.3.0",
+    "langchain-anthropic>=0.3.0",
+    "langchain-openai>=0.3.0",
+    "tavily-python>=0.5.0",
+    "pydantic-settings>=2.0",
+    "structlog",
+    "rich",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+markers = [
+    "integration: marks tests as integration tests (require API keys)",
+    "slow: marks tests as slow running",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
